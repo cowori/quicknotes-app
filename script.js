@@ -151,7 +151,23 @@ function addNote(text, category) {
     render();
 }
 
+function deleteNote(noteId) {
+    notes = notes.filter((note) => note.id !== noteId);
+    saveNotes();
+    render();
+}
 
+function validateNote(text) {
+    if (text.trim() === "") {
+        return "Please type a note first.";
+    }
+
+    if (text.length > 200) {
+        return "Notes must be 200 characters or fewer.";
+    }
+
+    return "";
+}
 noteForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
